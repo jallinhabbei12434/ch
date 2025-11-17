@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Consulta - CDT (Carteira Digital de Trânsito)</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-left">
+            <img src="cdtimg.png" alt="Logo CDT" class="header-logo">
+            <div>
+                <h1 class="header-title">Portal de Consulta - CDT</h1>
+                <p class="header-subtitle">(DENATRAN)</p>
+            </div>
+        </div>
+        <button class="header-notification">
+            <span class="notification-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" class="lucide lucide-bell w-4 h-4 sm:w-5 sm:h-5">
+                    <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"></path>
+                    <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"></path>
+                </svg></span>
+        </button>
+    </header>
+
+    <div class="container-1">
+        <div class="card" style="margin: 0 auto; display: flex; flex-direction: column;">
+            <img style="display: flex; margin: 0 auto;" src="cdtimg.png" alt="Logo CDT" class="logo">
+            <h3>Portal de Consulta - CDT (Carteira Digital de Trânsito)</h3>
+            <p>Departamento Nacional de Trânsito (DENATRAN)</p>
+
+            <div class="secure-info">
+                <div class="secure-header">
+                    <svg width="23px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M20.9099 11.1198C20.9099 16.0098 17.3599 20.5898 12.5099 21.9298C12.1799 22.0198 11.8198 22.0198 11.4898 21.9298C6.63984 20.5898 3.08984 16.0098 3.08984 11.1198V6.72979C3.08984 5.90979 3.70986 4.97979 4.47986 4.66979L10.0498 2.38982C11.2998 1.87982 12.7098 1.87982 13.9598 2.38982L19.5298 4.66979C20.2898 4.97979 20.9199 5.90979 20.9199 6.72979L20.9099 11.1198Z"
+                                stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <g opacity="0.4">
+                                <path
+                                    d="M12 12.5C13.1046 12.5 14 11.6046 14 10.5C14 9.39543 13.1046 8.5 12 8.5C10.8954 8.5 10 9.39543 10 10.5C10 11.6046 10.8954 12.5 12 12.5Z"
+                                    stroke="#2563EB" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                    stroke-linejoin="round"></path>
+                                <path d="M12 12.5V15.5" stroke="#2563EB" stroke-width="1.5" stroke-miterlimit="10"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                            </g>
+                        </g>
+                    </svg>
+                    <h3>Consulta Segura</h3>
+                    <span class="arrow">▼</span>
+                </div>
+                <p class="info-text">
+                    Esta consulta está sendo realizada através de conexão segura com o Sistema CDT (DENATRAN).
+                    Todas as informações são tratadas com sigilo absoluto, conforme determina a Lei nº 13.709/2018
+                    (LGPD).
+                </p>
+            </div>
+
+            <div class="form-group">
+                <label for="cpf">Informe seu CPF para consulta</label>
+                <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14">
+            </div>
+
+            <button id="consultButton" class="consult-button">CONSULTAR AGORA</button>
+
+            <p class="footer-text">
+                Esta consulta é realizada diretamente com os sistemas do CDT (DENATRAN)
+            </p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

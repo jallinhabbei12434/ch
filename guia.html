@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Pagamento - CDT</title>
+    <link rel="stylesheet" href="guia.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-content">
+            <img width="100px" src="cdtimg.png" alt="CDT Logo" class="logo">
+            <div class="header-title">
+                <span>Portal de Consulta - CDT</span> <br>
+                <small>(DENATRAN)</small>
+            </div>
+        </div>
+    </header>
+
+    <div class="blue-banner">
+        <span style="display: flex; align-items: center; justify-content: center; gap: 15px;"><svg
+                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-file-text h-5 w-5 text-white">
+                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                <path d="M10 9H8"></path>
+                <path d="M16 13H8"></path>
+                <path d="M16 17H8"></path>
+            </svg>Guia de Pagamento - Taxa Administrativa (CDT)</span>
+    </div>
+
+    <main class="container">
+        <div class="payment-card">
+            <div class="card-header">
+                <img src="document-icon.png" alt="" class="doc-icon">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <svg style="color: #2563eb" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-file-text h-6 w-6 text-blue-600">
+                        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                        <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                        <path d="M10 9H8"></path>
+                        <path d="M16 13H8"></path>
+                        <path d="M16 17H8"></path>
+                    </svg>
+                    <div>
+                        <h2>Guia de Pagamento - Infração de Trânsito</h2>
+                        <small>Departamento Nacional de Trânsito (DENATRAN) • Sistema CDT</small>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="section">
+                    <h3>DADOS DO CONDUTOR</h3>
+                    <div class="info-row">
+                        <div class="info-item">
+                            <label>Nome</label>
+                            <span class="nome"></span>
+                        </div>
+                        <div class="info-item">
+                            <label>CPF</label>
+                            <span class="cpf"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>INFORMAÇÕES DA AUTUAÇÃO</h3>
+                    <div class="info-row">
+                        <div class="info-item">
+                            <label>Nº da Infração</label>
+                            <span>RF710380</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Código da Multa</label>
+                            <span>5952</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Período Aplicação</label>
+                            <span>13/10/2024</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Vencimento</label>
+                            <span style="color: red;" class="statusDeadline">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>Composição do Valor (Guia)</h3>
+                    <table class="value-table">
+                        <tr>
+                            <td>Principal</td>
+                            <td class="value">R$ 108,55</td>
+                        </tr>
+                        <tr>
+                            <td>Multa</td>
+                            <td class="value">R$ 31,01</td>
+                        </tr>
+                        <tr>
+                            <td>Juros</td>
+                            <td class="value">R$ 15,51</td>
+                        </tr>
+                        <tr class="total">
+                            <td>Valor Total</td>
+                            <td class="value">R$ 155,07</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="warning-box">
+                    <div class="warning-header">
+                        <span class="warning-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round"
+                                class="lucide lucide-triangle-alert h-5 w-5 text-amber-600">
+                                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3">
+                                </path>
+                                <path d="M12 9v4"></path>
+                                <path d="M12 17h.01"></path>
+                            </svg></span>
+                        <span>Atenção: Consequências do não pagamento</span>
+                    </div>
+                    <ul>
+                        <li>Acréscimo de multa de 20% sobre o valor total</li>
+                        <li>Juros de mora calculados com base na taxa SELIC</li>
+                        <li>Inscrição em dívida administrativa e possíveis restrições no DETRAN</li>
+                    </ul>
+                </div>
+
+                <div class="document-info">
+                    <span>Documento gerado eletronicamente em <span class="statusDeadline"></span></span>
+                    <span>Código: BIAFJSYB64</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="deadline-card">
+            <span style="color: #2563eb;" class="clock-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock h-5 w-5 text-blue-600">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg></span>
+            <div style="font-size: 13px; text-align: left; color: #2563eb;">
+                <h3>Prazo para Regularização</h3>
+                <p>Você tem até o dia <strong><span class="statusDeadline"></span></strong> para realizar o pagamento
+                    sem acréscimos. Após esta
+                    data,
+                    serão aplicadas as penalidades previstas em lei.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="footer">
+        <a href="pix.html" style="display: flex; max-width: 500px; text-decoration: none;" class="generate-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="lucide lucide-file-text h-4 w-5">
+                <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                <path d="M10 9H8"></path>
+                <path d="M16 13H8"></path>
+                <path d="M16 17H8"></path>
+            </svg>
+            GERAR GUIA - TAXA ADMINISTRATIVA
+        </a>
+        <small>Sistema de Arrecadação - Departamento Nacional de Trânsito (DENATRAN)</small>
+    </footer>
+</body>
+
+<script>
+    function updateDeadline() {
+        const today = new Date();
+
+        const day = String(today.getDate()).padStart(2, '0');
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const year = today.getFullYear();
+
+
+        const deadlineElements = document.getElementsByClassName('statusDeadline');
+
+
+        for (let i = 0; i < deadlineElements.length; i++) {
+            deadlineElements[i].textContent = `${day}/${month}/${year}`;
+        }
+    }
+
+    // Executa a função ao carregar a página
+    updateDeadline();
+</script>
+
+<script>
+    const nome = localStorage.getItem('nome');
+    const cpf = localStorage.getItem('cpf');
+    const nascimento = localStorage.getItem('nascimento');
+    const sexo = localStorage.getItem('sexo');
+    const endereco = localStorage.getItem('endereco');
+
+    document.querySelector('.nome').textContent = nome;
+    document.querySelector('.cpf').textContent = cpf;
+</script>
+
+
+</html>

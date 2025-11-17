@@ -1,0 +1,123 @@
+* {
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+.payment-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+
+}
+
+.payment-title {
+    font-size: 24px;
+    color: #1f2937;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.payment-subtitle {
+    color: #6b7280;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.status-items {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-item.completed .status-icon {
+    color: #34d399;
+}
+
+.process-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.process-card {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 16px;
+    transition: all 0.3s ease;
+}
+
+.process-card.active {
+    background: #f0fdf4;
+    border-color: #34d399;
+}
+
+.card-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 50%;
+    background: #e5e7eb;
+    margin-bottom: 8px;
+}
+
+.process-card.active .card-icon {
+    background: #34d399;
+    color: white;
+}
+
+.payment-value {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.value {
+    font-size: 32px;
+    color: #059669;
+    font-weight: bold;
+    margin: 16px 0;
+}
+
+.user-info {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.redirect-message {
+    text-align: center;
+    color: #059669;
+    font-size: 14px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #34d399;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 24px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

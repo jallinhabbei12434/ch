@@ -1,0 +1,79 @@
+/* Estilos específicos para a tela de loading */
+.loading-card {
+    margin-top: 80px;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.loading-icon {
+    width: 60px;
+    height: 60px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #1a73e8;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 30px;
+}
+
+.loading-title {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.loading-subtitle {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.loading-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.loading-step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.loading-step.active {
+    opacity: 1;
+}
+
+.step-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #1a73e8;
+    border-radius: 50%;
+}
+
+.step-text {
+    color: #1a73e8;
+    font-size: 0.9rem;
+}
+
+.regularization-card {
+    margin-top: 20px;
+}
+
+.regularization-card .secure-info {
+    margin: 0;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

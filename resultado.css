@@ -1,0 +1,281 @@
+/* Estilos específicos para a página de resultado */
+:root {
+    --warning-color: #dc3545;
+    --warning-bg: #fff3f3;
+    --highlight-color: #ff4444;
+}
+
+.container {
+    padding-bottom: 40px;
+    background-color: white;
+    border-radius: 6px;
+    margin: 0 auto;
+    margin-top: 120px;
+}
+
+
+
+/* Status Bar */
+.status-bar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background-color: var(--warning-bg);
+    padding: 10px 0;
+    z-index: 100;
+}
+
+.status-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 20px;
+    color: var(--warning-color);
+}
+
+.status-deadline {
+    margin-left: auto;
+}
+
+/* Header Right */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-info {
+    text-align: right;
+}
+
+.user-info span {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: purple;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+/* Cards */
+.card {
+    margin-bottom: 20px;
+}
+
+.infracoes {
+    background-color: #FEFCE8;
+    border: 1px solid #FDE047;
+
+}
+
+.warning-content {
+    text-align: left;
+    color: #713f12;
+}
+
+.warning-header {
+    color: #713f12 !important;
+    display: flex;
+    align-items: center;
+}
+
+
+.consequencias {
+    background-color: #FEF2F2;
+    border: 1px solid #FCA5A5;
+}
+
+/* Dados Cadastrais */
+
+.dados-cadastrais {
+    text-align: left;
+}
+
+.user-details {
+    padding: 15px 0;
+    background-color: #F9FAFB;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.user-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-item label {
+    font-size: 0.8rem;
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+}
+
+/* Infrações */
+.warning-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.warning-content {
+    color: #666;
+    line-height: 1.6;
+}
+
+.warning-content ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.highlight {
+    color: var(--warning-color);
+    font-weight: 500;
+}
+
+.highlight-red {
+    color: var(--warning-color);
+    font-weight: bold;
+}
+
+.legal-basis {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Consequências */
+.consequencias-list {
+    display: grid;
+    gap: 20px;
+}
+
+.consequencia-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    text-align: left;
+}
+
+.consequencia-item .icon {
+    font-size: 1.5rem;
+}
+
+.consequencia-item h3 {
+    color: #333;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.consequencia-item p {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Regularização */
+.regularizacao {
+    background-color: #EFF6FF;
+    border: 1px solid #DBEAFE;
+    text-align: left;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 35px;
+    margin-bottom: 150px;
+    max-width: 600px;
+}
+
+.regularizacao-text {
+    color: #333;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-top: 10px;
+}
+
+.regularizacao-header {
+    display: flex;
+    align-items: center;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.regularizar-button {
+    width: 90%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px auto 0px;
+    transition: background-color 0.3s;
+}
+
+.regularizar-button:hover {
+    background-color: #1557b0;
+}
+
+.footer-text {
+    text-align: center;
+    color: var(--secondary-color);
+    font-size: 0.8rem;
+    padding-bottom: 10px;
+}
+
+.footer-container {
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+
+}
+
+@media screen and (max-width: 600px) {
+    .user-info {
+        display: none !important;
+    }
+
+    .header-title {
+        font-size: 0.7rem;
+    }
+
+    .status-bar {
+        font-size: 12px;
+        gap: 0px;
+        padding: 5px 0 !important;
+    }
+}

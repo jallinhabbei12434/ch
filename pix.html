@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento via PIX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-slate-900 mb-2">Pagamento via PIX</h1>
+                <p class="text-slate-500">Escaneie o QR Code ou copie o código</p>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loading" class="text-center py-8">
+                <div class="inline-block animate-spin">
+                    <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                        </path>
+                    </svg>
+                </div>
+                <p class="text-slate-500 mt-4">Gerando PIX...</p>
+            </div>
+
+            <!-- PIX Content -->
+            <div id="pixContent" class="hidden">
+                <!-- QR Code -->
+                <div class="flex justify-center mb-6">
+                    <div class="bg-slate-50 p-6 rounded-xl border-2 border-slate-200">
+                        <img id="qrImage" src="/placeholder.svg" alt="QR Code PIX" class="w-64 h-64">
+                    </div>
+                </div>
+
+                <!-- Code Section -->
+                <div class="bg-slate-50 rounded-xl p-4 mb-6">
+                    <label class="text-sm font-semibold text-slate-700 block mb-2">Código de cópia e cola:</label>
+                    <div class="flex gap-2">
+                        <textarea id="pixCode" readonly
+                            class="flex-1 bg-white border-2 border-slate-200 rounded-lg p-3 text-sm font-mono text-slate-900 resize-none focus:outline-none"
+                            rows="4"></textarea>
+                    </div>
+                </div>
+
+                <!-- Copy Button -->
+                <button onclick="copiar()"
+                    class="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                        </path>
+                    </svg>
+                    Copiar código PIX
+                </button>
+
+                <!-- Success Message -->
+                <div id="successMessage" class="hidden mt-4 bg-green-50 border-l-4 border-green-600 p-4 rounded">
+                    <p class="text-green-700 font-semibold text-sm">✓ Código copiado com sucesso!</p>
+                </div>
+            </div>
+
+            <!-- Error State -->
+            <div id="errorContent" class="hidden text-center py-8">
+                <svg class="w-12 h-12 text-red-600 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8v4m0 4v.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <p class="text-red-600 font-semibold mb-2">Erro ao gerar PIX</p>
+                <p class="text-slate-500 text-sm mb-4">Não foi possível conectar ao servidor</p>
+                <button onclick="gerarPix()" class="text-blue-600 hover:text-blue-700 font-semibold text-sm">
+                    Tentar novamente
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function gerarPix() {
+            try {
+                // Mostrar loading
+                document.getElementById('loading').classList.remove('hidden');
+                document.getElementById('pixContent').classList.add('hidden');
+                document.getElementById('errorContent').classList.add('hidden');
+
+                // Simular chamada à API
+                const res = await fetch('api.php');
+                const data = await res.json();
+                console.log(data);
+
+                if (data.paymentMethod === 'pix' && data.pix) {
+                    const qrText = data.pix.qrcode;
+                    const qrImage = `https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=${encodeURIComponent(qrText)}`;
+
+                    document.getElementById('qrImage').src = qrImage;
+                    document.getElementById('pixCode').value = qrText;
+
+                    document.getElementById('loading').classList.add('hidden');
+                    document.getElementById('pixContent').classList.remove('hidden');
+                } else {
+                    throw new Error('Erro ao gerar PIX');
+                }
+            } catch (err) {
+                console.error(err);
+                document.getElementById('loading').classList.add('hidden');
+                document.getElementById('errorContent').classList.remove('hidden');
+            }
+        }
+
+        function copiar() {
+            const textarea = document.getElementById('pixCode');
+            textarea.select();
+
+            try {
+                document.execCommand('copy');
+
+                // Mostrar mensagem de sucesso
+                const successMsg = document.getElementById('successMessage');
+                successMsg.classList.remove('hidden');
+
+                setTimeout(() => {
+                    successMsg.classList.add('hidden');
+                }, 2000);
+            } catch (err) {
+                console.error('Erro ao copiar:', err);
+                alert('Erro ao copiar o código');
+            }
+        }
+
+
+        gerarPix();
+    </script>
+</body>
+
+</html>
