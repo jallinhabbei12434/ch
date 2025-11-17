@@ -1,6 +1,5 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
@@ -13,16 +12,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 // receber JSON ou form-data
 $input = json_decode(file_get_contents('php://input'), true);
+
 $cpf = null;
+$nascimento = null;
+
 if (!empty($input['cpf'])) {
     $cpf = $input['cpf'];
 } elseif (!empty($_POST['cpf'])) {
     $cpf = $_POST['cpf'];
 }
 
+if (!empty($input['nascimento'])) {
+    $nascimento = $input['nascimento'];
+} elseif (!empty($_POST['nascimento'])) {
+    $nascimento = $_POST['nascimento'];
+}
+
 if (!$cpf) {
     http_response_code(400);
     echo json_encode(['status' => 400, 'error' => 'CPF não informado']);
+    exit;
+}
+
+if (!$nascimento) {
+    http_response_code(400);
+    echo json_encode(['status' => 400, 'error' => 'Data de nascimento não informada']);
     exit;
 }
 
@@ -36,9 +50,25 @@ if (strlen($cpf_digits) !== 11) {
     exit;
 }
 
-// preparar URL (substitua user=... se quiser guardar em config)
-$userKey = '57e4b10fcfb4c27b03328ca6c91187e5';
-$remoteUrl = "https://apela-api.tech/?user=" . urlencode($userKey) . "&cpf=" . urlencode($cpf_digits);
+// limpar data de nascimento (manter apenas dígitos)
+$nascimento_digits = preg_replace('/\D/', '', $nascimento);
+
+// validar tamanho da data (formato DDMMAAAA = 8 dígitos)
+if (strlen($nascimento_digits) !== 8) {
+    http_response_code(400);
+    echo json_encode(['status' => 400, 'error' => 'Data de nascimento inválida (use formato DD/MM/AAAA ou DDMMAAAA)']);
+    exit;
+}
+
+// *** IMPORTANTE: Substitua pelo seu token do Hub do Desenvolvedor ***
+$apiToken = '190873360MAeVzvSNkK344616064';
+
+// preparar URL da API do Hub do Desenvolvedor
+// Endpoint: http://ws.hubdodesenvolvedor.com.br/v2/cpf/
+$remoteUrl = "http://ws.hubdodesenvolvedor.com.br/v2/cpf/?" 
+    . "cpf=" . urlencode($cpf_digits) 
+    . "&data=" . urlencode($nascimento_digits)
+    . "&token=" . urlencode($apiToken);
 
 // fazer requisição cURL
 $ch = curl_init();
@@ -62,6 +92,7 @@ if ($response === false || $curlErr) {
 
 // tentar decodificar
 $json = json_decode($response, true);
+
 if ($json === null) {
     // se o remoto retornou texto, devolvemos como campo raw
     http_response_code(200);
